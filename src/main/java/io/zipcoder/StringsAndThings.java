@@ -15,7 +15,16 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String[] ary = input.split(" ");
+
+        int numOfWords = 0;
+        for(int i =0 ; i < ary.length; i++){
+            char[] newOne = ary[i].toCharArray();
+            if(newOne[newOne.length -1] == 'z' || newOne[newOne.length -1] == 'y') {
+                numOfWords++;
+            }
+        }
+        return numOfWords;
     }
 
     /**
@@ -28,7 +37,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        return base.replace(remove, "");
     }
 
     /**
@@ -39,9 +49,29 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
-    }
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+        Boolean result = false;
+        int numOfIs = 0;
+        int numOfNots = 0;
+        for (int i = 0; i <= input.length()-2; i++) {
+            if (input.substring(i, i + 2).equals("is")) {
+                numOfIs++;
+            }
+        }
+        for (int i = 0; i <= input.length()-3; i++) {
+
+            if (input.substring(i, i + 3).equals("not")) {
+                numOfNots++;
+            }
+        }
+
+        if(numOfIs == numOfNots){
+            result = true;
+        }
+
+        return result;
+      }
+
 
     /**
      * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
@@ -51,7 +81,14 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        for (int i = 0; i <= input.length()-2; i++) {
+            if (input.substring(i, i + 2).equals("gg")) {
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
 
@@ -63,6 +100,21 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int numOfTrips = 0;
+        if (input.length() < 3){
+            return 0;
+        } else {
+            for (int i = 0; i <= input.length()-3; i++) {
+
+                if (input.charAt(i) == input.charAt(i+1) && input.charAt(i+1) == input.charAt(i+2)) {
+                    numOfTrips++;
+                }
+            }
+
+
+        }
+
+
+        return numOfTrips;
     }
 }
